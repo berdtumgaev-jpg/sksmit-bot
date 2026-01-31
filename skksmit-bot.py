@@ -8,7 +8,10 @@ from aiogram.filters import Command
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
 # Токен лучше хранить в переменной окружения (на Heroku — config vars)
-TOKEN = os.getenv("BOT_TOKEN", "8555385357:AAHKa4NQPhwRZ5iMn_rTEa4r5bmfvJ0SIns")
+TOKEN = os.getenv("BOT_TOKEN")
+if not TOKEN:
+    print("ERROR: BOT_TOKEN not set!")
+    exit(1)
 
 bot = Bot(token=TOKEN)
 storage = MemoryStorage()
